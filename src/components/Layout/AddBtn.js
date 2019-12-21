@@ -4,7 +4,7 @@ const AddBtn = () => {
   return (
     <div className="fixed-action-btn">
       <a
-        href="#edit-log-modal"
+        href="#add-log-modal"
         className="btn-floating btn-large waves-effect waves-light red modal-trigger"
       >
         <i className="material-icons">add</i>
