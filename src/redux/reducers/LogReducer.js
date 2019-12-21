@@ -12,11 +12,16 @@ export default (state = initialState, { type, data }) => {
       return { ...state, logs: data, loading: false };
     case actions.ADD_LOG:
       return { ...state, logs: [...state.logs, data], loading: false };
+    case actions.DELETE_LOG:
+      return {
+        ...state,
+        logs: state.logs.filter(log => log.id !== data),
+        loading: false
+      };
 
     case actions.SET_LOADING:
       return { ...state, loading: true };
     case actions.LOGS_ERROR:
-      console.error(data);
       return { ...state, error: data };
     default:
       return state;

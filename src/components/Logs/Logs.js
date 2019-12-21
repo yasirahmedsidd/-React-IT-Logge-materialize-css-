@@ -10,8 +10,7 @@ const Logs = ({ log: { logs, loading }, getLogs }) => {
     getLogs();
     //eslint-disable-next-line
   }, []);
-
-  if (loading || logs.length === []) {
+  if (loading) {
     return <Preloader />;
   } else {
     return (
@@ -19,8 +18,8 @@ const Logs = ({ log: { logs, loading }, getLogs }) => {
         <li className="collection-header">
           <h4 className="center">System Logs</h4>
         </li>
-        {!loading && logs.length === 0 ? (
-          <p className="center">No logs to show...</p>
+        {loading && logs.length === 0 ? (
+          <p className="center">No Logs...</p>
         ) : (
           logs.map(log => <LogItem key={log.id} log={log} />)
         )}

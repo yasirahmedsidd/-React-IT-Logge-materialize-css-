@@ -41,6 +41,25 @@ export const addLog = log => async dispatch => {
     });
   }
 };
+// Delete Log
+//Get logs from server
+export const deleteLog = id => async dispatch => {
+  try {
+    setLoading();
+    await fetch(`http://localhost:3001/logs/${id}`, {
+      method: "DELETE"
+    });
+    dispatch({
+      type: actions.DELETE_LOG,
+      data: id
+    });
+  } catch (err) {
+    dispatch({
+      type: actions.LOGS_ERROR,
+      data: err.response.data
+    });
+  }
+};
 
 // Set Loading to TRUE
 export const setLoading = () => ({
